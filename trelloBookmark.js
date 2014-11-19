@@ -93,10 +93,10 @@ function trelloBookmark(listId) {
           width:200px;\
           height:20px;\
           height:auto;\
-          position:absolute;\
+          position:fixed;\
           left:50%;\
           margin-left:-100px;\
-          bottom:10px;\
+          top:10px;\
           background-color: #383838;\
           color: #F0F0F0;\
           font-family: Calibri;\
