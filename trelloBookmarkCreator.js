@@ -1,5 +1,5 @@
 //Indicates the URL to the trelloBookmark.js
-var trelloBookmarkURL = "trelloBookmark.js";
+var trelloBookmarkURL = "http://shinglyu.github.io/trello-bookmark-creator/trelloBookmark.js";
 
 //Start of page
 function init() {
