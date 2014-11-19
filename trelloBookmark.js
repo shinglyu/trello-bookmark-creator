@@ -87,21 +87,46 @@ function trelloBookmark(listId) {
       }
 
       //Once the user is logged in this function is fired
+      var notification = "<div id='toast'>Saved to Trello</div>\
+        <style>\
+          #toast {\
+          width:200px;\
+          height:20px;\
+          height:auto;\
+          position:absolute;\
+          left:50%;\
+          margin-left:-100px;\
+          bottom:10px;\
+          background-color: #383838;\
+          color: #F0F0F0;\
+          font-family: Calibri;\
+          font-size: 20px;\
+          padding:10px;\
+          text-align:center;\
+          border-radius: 2px;\
+          -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);\
+          -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);\
+          box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);\
+        </style>\
+      ";
+
       function sendToTrello() {
         //Confirm the submission
-        if (window.confirm("Are you sure?")) {
+        //if (window.confirm("Are you sure?")) {
           //Post the card to Trello
-          Trello.post("cards", {
-            name: name,
-            desc: desc,
-            idList: listId
-          }, function(data) {
-          }, function(data) {
-            //If failed, then try a complete reset
-            alert("Error posting card, please refresh the page and try again.");
-            deauth();
-          });
-        }
+        Trello.post("cards", {
+          name: name,
+          desc: desc,
+          idList: listId
+        }, function(data) {
+          document.body.innerHTML += (notification);
+          setTimeout(function(){document.getElementById('toast').style.display = "none";}, 3000);
+        }, function(data) {
+          //If failed, then try a complete reset
+          alert("Error posting card, please refresh the page and try again.");
+          deauth();
+        });
+        //}
       }
 
       $(populateCard);
